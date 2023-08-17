@@ -12,7 +12,7 @@ import java.util.Random;
 public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;//this class will be used in mouseListener and mouseMotionListener
     private float xDelta = 100, yDelta = 100;
-    private float xDir = 0.1f, yDir = 0.1f; //to bounce rectangle from screen edge, number is speed of direction
+    private float xDir = 1f, yDir = 1f; //to bounce rectangle from screen edge, number is speed of direction
     private int frames = 0;
     private long lastCheck = 0; //check for FPS
     private Color color = new Color(150,20,90);
@@ -51,17 +51,6 @@ public class GamePanel extends JPanel {
         updateRectangle();
         g.setColor(color);
         g.fillRect((int)xDelta, (int) yDelta,200,50); //position and size of the rectangle
-
-        frames ++;
-
-        // Old Game Loop
-        if (System.currentTimeMillis() - lastCheck >= 1000){
-            lastCheck = System.currentTimeMillis();
-            System.out.println("FPS: " + frames);
-            frames = 0;//resetting frames for elapsed since last time check
-        }
-
-        repaint(); // repaint the game panel after an input to give impression of movement
     }
 
     public void updateRectangle(){
@@ -82,9 +71,9 @@ public class GamePanel extends JPanel {
 
     public Color getRndColor(){
         int r = random.nextInt(255);//returns between including 0 - 255 as to the values for color parameters
-        int b = random.nextInt(255);
         int g = random.nextInt(255);
-        return new Color(r,b,g);
+        int b = random.nextInt(255);
+        return new Color(r,g,b);
     }
 
 
