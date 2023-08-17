@@ -6,11 +6,13 @@ public class GameWindow extends JFrame {
 
     private JFrame jframe;
 
-    public GameWindow () {
+    public GameWindow (GamePanel gamePanel) {
         this.jframe = new JFrame();
         jframe.setSize(400, 400);
-        jframe.setVisible(true);
+
+        jframe.add(gamePanel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setVisible(true); //this needs to be at the bottom to repaint when resizing
     }
 
 
